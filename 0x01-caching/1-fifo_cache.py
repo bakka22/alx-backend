@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """ FIFO Replacment policy """
 BasicCache = __import__('0-basic_cache').BasicCache
+BaseCaching = __import__('base_caching').BaseCaching
 
 
 class FIFOCache(BasicCache):
@@ -18,7 +19,7 @@ class FIFOCache(BasicCache):
         if key not in self.key_q:
             self.key_q.append(key)
         self.cache_data[key] = item
-        if len(self.key_q) > self.MAX_ITEMS:
+        if len(self.key_q) > BaseCaching.MAX_ITEMS:
             dis = self.key_q.pop(0)
             print(f"DISCARD: {dis}")
             del self.cache_data[dis]
