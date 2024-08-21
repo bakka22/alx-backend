@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """ FIFO Replacment policy """
+from collections import OrderedDict
 BasicCache = __import__('0-basic_cache').BasicCache
 BaseCaching = __import__('base_caching').BaseCaching
 
