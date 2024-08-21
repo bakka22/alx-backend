@@ -10,7 +10,8 @@ class FIFOCache(BasicCache):
     def __init__(self):
         """ initialize an instance of the class """
         super().__init__()
-        self.key_q = []
+        # self.key_q = []
+        self.cache_data = OrderedDict()
 
     def put(self, key, item):
         """ assign a value to a key in self.cache_data
