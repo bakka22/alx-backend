@@ -38,4 +38,4 @@ class FIFOCache(BasicCache):
         """ retrieve a value of a key from self.cache_data """
         if not key:
             return None
-        return self.cahce_data.get(key)
+        return self.cahce_data.get(key, None)
