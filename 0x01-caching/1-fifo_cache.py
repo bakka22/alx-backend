@@ -13,7 +13,7 @@ class FIFOCache(BasicCache):
         self.key_q = []
 
     def put(self, key, item):
-        """ assign a value to a key in self.cache_data """
+        """ assign a value to a key in self.cache_data
         if not key or not item:
             return
         if key not in self.key_q:
@@ -22,7 +22,15 @@ class FIFOCache(BasicCache):
         if len(self.key_q) > BaseCaching.MAX_ITEMS:
             dis = self.key_q.pop(0)
             print(f"DISCARD: {dis}")
-            del self.cache_data[dis]
+            del self.cache_data[dis]"""
+        if key is None or item is None:
+            return
+
+        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+            first_key, _ = self.cache_data.popitem(last=False)
+            print(f"DISCARD: {first_key}")
+
+        self.cache_data[key] = item
 
     def get(self, key):
         """ retrieve a value of a key from self.cache_data """
