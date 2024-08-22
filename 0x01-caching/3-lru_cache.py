@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-""" FIFO Replacment policy """
+""" LRU Replacment policy """
+from collections import deque
 BasicCache = __import__('0-basic_cache').BasicCache
 BaseCaching = __import__('base_caching').BaseCaching
 
 
-class LIFOCache(BasicCache):
-    """ Caching system that implements FIFO Replacment policy """
+class LRUCache(BasicCache):
+    """ Caching system that implements LRU Replacment policy """
 
     def __init__(self):
         """ initialize an instance of the class """
@@ -20,7 +21,7 @@ class LIFOCache(BasicCache):
         if key not in self.key_q:
             self.key_q.append(key)
             if len(self.key_q) > BaseCaching.MAX_ITEMS:
-                dis = self.key_q.pop(-2)
+                dis = self.key_q.pop(0)
                 print(f"DISCARD: {dis}")
                 del self.cache_data[dis]
         else:
