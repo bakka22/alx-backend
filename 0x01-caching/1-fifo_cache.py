@@ -14,8 +14,8 @@ class FIFOCache(BasicCache):
 
     def put(self, key, item):
         """ assign a value to a key in self.cache_data"""
-        if not key or not item:
-            return
+        #if not key or not item:
+            #return
         self.cache_data[key] = item
         if key not in self.key_q:
             self.key_q.append(key)
