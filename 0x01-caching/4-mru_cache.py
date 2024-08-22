@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-""" LRU Replacment policy """
-from collections import deque
+""" MRU Replacment policy """
 BasicCache = __import__('0-basic_cache').BasicCache
 BaseCaching = __import__('base_caching').BaseCaching
 
 
-class LRUCache(BasicCache):
-    """ Caching system that implements LRU Replacment policy """
+class MRUCache(BasicCache):
+    """ Caching system that implements MRU Replacment policy """
 
     def __init__(self):
         """ initialize an instance of the class """
@@ -21,7 +20,7 @@ class LRUCache(BasicCache):
         if key not in self.key_q:
             self.key_q.append(key)
             if len(self.key_q) > BaseCaching.MAX_ITEMS:
-                dis = self.key_q.pop(0)
+                dis = self.key_q.pop(-2)
                 print(f"DISCARD: {dis}")
                 del self.cache_data[dis]
         else:
